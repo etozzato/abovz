@@ -1,15 +1,15 @@
 # Abovz
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/abovz`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+An API mocking GEM. Calls to 3rd party APIs can be pricey if only a production API is provided. The use of 3rd party APIs also implies connectivity, variable response time and unpredictable availability.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'abovz'
+group :development. :test do
+  gem 'abovz'
+end
 ```
 
 And then execute:
@@ -22,20 +22,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Configure the API that you want to enable (**default** is: _all APIs included_).
+At that point, calls to the 3rd party services will be intercepted and mocked.
 
-## Development
+```ruby
+# in /config/initializers/abovz.rb
+Abovz.configure do |c|
+  c.apis = ['box.rb']
+end
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/abovz. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+```WebMock.allow_net_connect!``` is used to allow the normal access to any other URL that is not specified.
 
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-

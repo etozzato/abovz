@@ -1,8 +1,15 @@
 require 'abovz/initializers/webmock'
-Dir.glob('../lib/abovz/api/*.rb').each { |file| require file }
+require 'abovz/configuration'
 require 'abovz/version'
 
 module Abovz
+  extend Configuration
+
+  def self.init
+    Abovz.apis.each do |file|
+      require File.join(File.dirname(__FILE__), 'abovz/api', file)
+    end
+  end
 end
 
-# Abovz.init
+Abovz.init

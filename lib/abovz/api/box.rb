@@ -1,7 +1,7 @@
 require 'sinatra/base'
-class ::Speechmatic < Sinatra::Base
+class ::Box < Sinatra::Base
   get '/' do
-    json_response 200, 'Speechmatic API MOCK'
+    json_response 200, 'Box API MOCK'
   end
 
   private
@@ -13,4 +13,4 @@ class ::Speechmatic < Sinatra::Base
   end
 end
 
-stub_request(:any, /api.speechmatic.com/).to_rack(::Speechmatic)
+stub_request(:any, /api.box.com/).to_rack(::Box)

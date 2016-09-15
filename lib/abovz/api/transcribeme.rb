@@ -1,7 +1,7 @@
 require 'sinatra/base'
 class ::Transcribeme < Sinatra::Base
-  get '/info' do
-    json_response 200, 'Transcribeme'
+  get '/' do
+    json_response 200, 'Transcribeme API MOCK'
   end
 
   private
